@@ -1,0 +1,155 @@
+ // Displaying menu
+            System.out.println(
+                    "----------------------------------------------------------------------------------------------------------");
+            System.out.println("Press 1 to Add new Book.");
+            System.out.println("Press 0 to Exit Application.");
+            System.out.println(
+                    "Press 2 to Upgrade Quantity of a Book.");
+            System.out.println("Press 3 to Search a Book.");
+            System.out.println("Press 4 to Show All Books.");
+            System.out.println("Press 5 to Register Student.");
+            System.out.println(
+                    "Press 6 to Show All Registered Students.");
+            System.out.println("Press 7 to Check Out Book. ");
+            System.out.println("Press 8 to Check In Book");
+            System.out.println(
+                    "-------------------------------------------------------------------------------------------------------");
+        } 
+ case 3:
+
+                    System.out.println(
+                            " press 1 to Search with Book Serial No.");
+                    System.out.println(
+                            " Press 2 to Search with Book's Author Name.");
+                    searchChoice = input.nextInt();
+
+                    // Nested switch
+                    switch (searchChoice) {
+
+                        // Case
+                        case 1:
+                            ob.searchBySno();
+                            break;
+
+                        // Case
+                        case 2:
+                            ob.searchByAuthorName();
+                    }
+                    break;
+
+public void searchBySno()
+        {
+
+            // Display message
+            System.out.println(
+                    "\t\t\t\tSEARCH BY SERIAL NUMBER\n");
+
+            // Class data members
+            int sNo;
+            System.out.println("Enter Serial No of Book:");
+            sNo = input.nextInt();
+
+            int flag = 0;
+            System.out.println(
+                    "S.No\t\tName\t\tAuthor\t\tAvailable Qty\t\tTotal Qty");
+
+            for (int i = 0; i < count; i++) {
+                if (sNo == theBooks[i].sNo) {
+                    System.out.println(
+                            theBooks[i].sNo + "\t\t"
+                                    + theBooks[i].bookName + "\t\t"
+                                    + theBooks[i].authorName + "\t\t"
+                                    + theBooks[i].bookQtyCopy + "\t\t"
+                                    + theBooks[i].bookQty);
+                    flag++;
+                    return;
+                }
+            }
+            if (flag == 0)
+                System.out.println("No Book for Serial No "
+                        + sNo + " Found.");
+        }
+
+        // Method 4
+        // To search author by name
+        public void searchByAuthorName()
+        {
+
+            // Display message
+            System.out.println(
+                    "\t\t\t\tSEARCH BY AUTHOR'S NAME");
+
+            input.nextLine();
+
+            System.out.println("Enter Author Name:");
+            String authorName = input.nextLine();
+
+            int flag = 0;
+
+            System.out.println(
+                    "S.No\t\tName\t\tAuthor\t\tAvailable Qty\t\tTotal Qty");
+
+            for (int i = 0; i < count; i++) {
+
+                // if author matches any of its book
+                if (authorName.equalsIgnoreCase(
+                        theBooks[i].authorName)) {
+
+                    // Print below corresponding credentials
+                    System.out.println(
+                            theBooks[i].sNo + "\t\t"
+                                    + theBooks[i].bookName + "\t\t"
+                                    + theBooks[i].authorName + "\t\t"
+                                    + theBooks[i].bookQtyCopy + "\t\t"
+                                    + theBooks[i].bookQty);
+                    flag++;
+                }
+            }
+
+            // Else no book matches for author
+            if (flag == 0)
+                System.out.println("No Books of " + authorName
+                        + " Found.");
+        }
+Output-->
+Press 1 to Add new Book.
+Press 0 to Exit Application.
+Press 2 to Upgrade Quantity of a Book.
+Press 3 to Search a Book.
+Press 4 to Show All Books.
+Press 5 to Register Student.
+Press 6 to Show All Registered Students.
+Press 7 to Check Out Book. 
+Press 8 to Check In Book
+-------------------------------------------------------------------------------------------------------
+3
+ press 1 to Search with Book Serial No.
+ Press 2 to Search with Book's Author Name.
+1
+				SEARCH BY SERIAL NUMBER
+
+Enter Serial No of Book:
+1
+S.No		Name		Author		Available Qty		Total Qty
+1		computer science		abc		4		4
+----------------------------------------------------------------------------------------------------------
+Press 1 to Add new Book.
+Press 0 to Exit Application.
+Press 2 to Upgrade Quantity of a Book.
+Press 3 to Search a Book.
+Press 4 to Show All Books.
+Press 5 to Register Student.
+Press 6 to Show All Registered Students.
+Press 7 to Check Out Book. 
+Press 8 to Check In Book
+-------------------------------------------------------------------------------------------------------
+3
+ press 1 to Search with Book Serial No.
+ Press 2 to Search with Book's Author Name.
+2
+				SEARCH BY AUTHOR'S NAME
+Enter Author Name:
+abc
+S.No		Name		Author		Available Qty		Total Qty
+1		computer science		abc		4		4
+
